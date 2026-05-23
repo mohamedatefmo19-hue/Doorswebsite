@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>درع الأمان | أبواب مصفحة وداخلية فاخرة</title>
+  <meta name="description" content="أبواب مصفحة تركي وإيطالي بأعلى معايير الأمان، 11 نقطة غلق، صلب 1.5 مم، عزل تام. أبواب داخلية مودرن وكلاسيك. معاينة مجانية وتركيب في 24 ساعة.">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- TailwindCSS CDN (lightweight) + custom overrides -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom overrides and animations */
+    body {
+      font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+      background-color: #050709;
+    }
+    .animate-ping {
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050709;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+    .bg-grid-pattern {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+    }
+    .backdrop-blur-xl {
+      backdrop-filter: blur(24px);
+    }
+    .backdrop-blur-2xl {
+      backdrop-filter: blur(40px);
+    }
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .duration-500 {
+      transition-duration: 500ms;
+    }
+  </style>
+</head>
+<body class="bg-[#050709] text-white antialiased">
+
+  <!-- Main Content -->
+  <div id="app" class="min-h-screen"></div>
+
+  <script>
+    // Configuration
+    const WHATSAPP_NUMBER = "201000000000"; // change to your number
+    const WHATSAPP_MESSAGE = "مرحبا، عايز استفسر عن الأبواب المصفحة والداخلية";
+    const whatsappLink = (text = WHATSAPP_MESSAGE) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    // Data
+    const products = [
+      { title: "أبواب مصفحة تركي", desc: "صلب 1.5 مم، 11 نقطة غلق، عزل صوت وحرارة، ضمان 10 سنوات", price: "يبدأ من 12,500 ج", image: "https://images.pexels.com/photos/13963754/pexels-photo-13963754.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=1000", badge: "الأكثر مبيعاً", features: ["قفل تركي Kale", "حشو صوف صخري", "إطار 2 مم"] },
+      { title: "أبواب مصفحة إيطالي", desc: "تصميم فاخر، أمان ثلاثي الأبعاد، تشطيب خشبي طبيعي", price: "يبدأ من 18,900 ج", image: "https://images.pexels.com/photos/8134793/pexels-photo-8134793.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=1000", badge: "فاخر", features: ["Dierre locks", "مفصلات مخفية", "ضد الكسر"] },
+      { title: "أبواب داخلية مودرن", desc: "خشب MDF تركي، قشرة أرو / PVC، مقاوم للخدش والرطوبة", price: "يبدأ من 3,200 ج", image: "https://images.pexels.com/photos/6436758/pexels-photo-6436758.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1000&w=800", badge: "جديد", features: ["45 تصميم", "تركيب في يوم", "عزل صوت"] },
+      { title: "أبواب داخلية كلاسيك", desc: "حشو خشب طبيعي، دهان دوكو فرن، تفصيل حسب المقاس", price: "يبدأ من 4,800 ج", image: "https://images.pexels.com/photos/32207980/pexels-photo-32207980.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=1000", badge: "تفصيل", features: ["زان روماني", "ضمان 5 سنوات", "أي لون"] }
+    ];
+
+    const gallery = [
+      "https://images.pexels.com/photos/13600510/pexels-photo-13600510.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600",
+      "https://images.pexels.com/photos/13094990/pexels-photo-13094990.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600",
+      "https://images.pexels.com/photos/8276607/pexels-photo-8276607.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600",
+      "https://images.pexels.com/photos/10091248/pexels-photo-10091248.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600",
+      "https://images.pexels.com/photos/2564866/pexels-photo-2564866.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600",
+      "https://images.pexels.com/photos/16515/pexels-photo.jpg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600"
+    ];
+
+    // App state
+    let state = {
+      isMenuOpen: false,
+      scrolled: false,
+      formData: { name: "", phone: "", doorType: "مصفحة تركي", city: "" }
+    };
+
+    const root = document.getElementById("app");
+
+    function render() {
+      if (!root) return;
+      const { isMenuOpen, scrolled, formData } = state;
+      root.innerHTML = `
+        <!-- Background Effects -->
+        <div class="fixed inset-0 -z-10">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.15),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(14,165,233,0.1),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(139,92,246,0.1),transparent_50%)]"></div>
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-[200px]"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/10' : 'bg-transparent'}">
+          <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[78px]">
+              <div class="flex items-center gap-4">
+                <div class="relative">
+                  <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur-xl opacity-50"></div>
+                  <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl shadow-amber-500/20">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="white" strokeWidth="2" fill="white" fillOpacity="0.2"/><path d="M12 8v8M8 10l8 4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  </div>
+                </div>
+                <div><div class="text-xl font-black tracking-tight">دِرْع الأمان</div><div class="text-[10px] text-amber-400/80 -mt-1 font-medium tracking-widest">ABWAB PRO</div></div>
+              </div>
+              <nav class="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-xl rounded-full p-1.5 border border-white/10">
+                <a href="#products" class="px-5 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">المنتجات</a>
+                <a href="#features" class="px-5 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">المميزات</a>
+                <a href="#gallery" class="px-5 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">أعمالنا</a>
+                <a href="#pricing" class="px-5 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">الأسعار</a>
+              </nav>
+              <div class="flex items-center gap-3">
+                <a href="tel:+${WHATSAPP_NUMBER}" class="hidden sm:flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors">
+                  <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <span class="hidden md:block">اتصل الآن</span>
+                </a>
+                <a href="${whatsappLink()}" target="_blank" class="relative group">
+                  <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full blur-lg opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="relative flex items-center gap-2 px-5 h-11 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full font-bold text-sm shadow-xl shadow-green-500/20 group-hover:shadow-green-500/30 transition-all">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>واتساب
+                  </div>
+                </a>
+                <button id="menuToggle" class="lg:hidden w-11 h-11 grid place-items-center rounded-full bg-white/10 border border-white/10">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="${isMenuOpen ? 'M18 6L6 18M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          ${isMenuOpen ? `<div class="lg:hidden border-t border-white/10 bg-black/95 backdrop-blur-2xl"><div class="px-4 py-4 space-y-1"><a href="#products" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 font-medium">المنتجات</a><a href="#features" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 font-medium">المميزات</a><a href="#gallery" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 font-medium">أعمالنا</a><a href="#pricing" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 font-medium">الأسعار</a></div></div>` : ''}
+        </header>
+
+        <!-- Hero Section -->
+        <section class="relative min-h-[100vh] flex items-center pt-[78px] overflow-hidden">
+          <div class="absolute inset-0"><img src="https://images.pexels.com/photos/8134793/pexels-photo-8134793.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1600&w=2400" class="w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/60"></div><div class="absolute inset-0 bg-gradient-to-t from-[#050709] via-transparent to-transparent"></div></div>
+          <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+              <div>
+                <div class="inline-flex items-center gap-2.5 mb-8 px-4 h-9 rounded-full bg-amber-500/10 border border-amber-500/20 backdrop-blur-xl"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span></span><span class="text-xs font-bold tracking-wider text-amber-300">خصم 25% لفترة محدودة + تركيب مجاني</span></div>
+                <h1 class="text-[clamp(36px,6vw,84px)] font-black leading-[0.9] tracking-tight">بابك المصفح<br/><span class="relative inline-block mt-2"><span class="relative z-10 bg-gradient-to-l from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent">يحمي عيلتك</span><svg class="absolute -bottom-3 left-0 w-full h-3 text-amber-500/30" viewBox="0 0 300 12" fill="none"><path d="M1 5.5c50-4 150-4 200 0 50 4 99 4 99 0" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/></svg></span></h1>
+                <p class="mt-8 text-lg lg:text-xl leading-relaxed text-zinc-300 max-w-[580px] font-medium">أبواب مصفحة تركي وإيطالي بأعلى معايير الأمان. <span class="text-white font-bold">11 نقطة غلق، صلب 1.5 مم، عزل تام.</span> وأبواب داخلية مودرن بتشطيب فاخر. معاينة مجانية وتركيب في 24 ساعة.</p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4"><a href="${whatsappLink('عايز عرض سعر للباب المصفح')}" target="_blank" class="group relative"><div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div><div class="relative flex items-center justify-center gap-3 h-[56px] px-8 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl font-black text-[17px] shadow-2xl shadow-amber-600/25 group-hover:shadow-amber-600/40 transition-all group-hover:-translate-y-0.5"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>احصل على عرض واتساب الآن</div></a><a href="#products" class="h-[56px] px-8 grid place-items-center rounded-2xl bg-white/5 backdrop-blur-xl border border-white/15 font-bold text-[17px] hover:bg-white/10 transition-all">شوف الموديلات</a></div>
+                <div class="mt-12 grid grid-cols-3 gap-6 max-w-[480px]">${[{value:"2,847",label:"باب تم تركيبه"},{value:"10",label:"سنوات ضمان"},{value:"4.9",label:"تقييم العملاء"}].map(stat => `<div class="relative group"><div class="absolute inset-0 bg-white/5 rounded-2xl blur-xl group-hover:bg-white/10 transition-all"></div><div class="relative p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl text-center"><div class="text-2xl lg:text-3xl font-black text-amber-400">${stat.value}</div><div class="text-[11px] text-zinc-400 mt-1 font-medium">${stat.label}</div></div></div>`).join('')}</div>
+              </div>
+              <div class="lg:justify-self-end w-full max-w-[440px]"><div class="relative"><div class="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-orange-600/20 rounded-[2.5rem] blur-3xl"></div><div class="relative overflow-hidden rounded-[2rem] bg-zinc-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl"><div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div><div class="p-8"><div class="flex items-start justify-between mb-6"><div><h3 class="text-[22px] font-black">معاينة مجانية اليوم</h3><p class="text-sm text-zinc-400 mt-1">نوصلك في 3 ساعات • بدون التزام</p></div><div class="w-10 h-10 rounded-xl bg-green-500/15 border border-green-500/20 grid place-items-center"><div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div></div></div><form id="leadForm"><div class="grid grid-cols-2 gap-3"><input required id="formName" placeholder="الاسم" class="h-12 px-4 rounded-xl bg-black/50 border border-white/10 focus:border-amber-500/50 focus:outline-none text-[15px] placeholder:text-zinc-600"><input required id="formPhone" placeholder="الموبايل" class="h-12 px-4 rounded-xl bg-black/50 border border-white/10 focus:border-amber-500/50 focus:outline-none text-[15px] placeholder:text-zinc-600"></div><select id="formDoorType" class="w-full h-12 px-4 rounded-xl bg-black/50 border border-white/10 focus:border-amber-500/50 focus:outline-none text-[15px] mt-3"><option>مصفحة تركي</option><option>مصفحة إيطالي</option><option>داخلية مودرن</option><option>داخلية كلاسيك</option></select><input id="formCity" placeholder="المنطقة (القاهرة، الجيزة...)" class="w-full h-12 px-4 rounded-xl bg-black/50 border border-white/10 focus:border-amber-500/50 focus:outline-none text-[15px] placeholder:text-zinc-600 mt-3"><button type="submit" class="group relative w-full mt-2"><div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl blur opacity-70 group-hover:opacity-100 transition-opacity"></div><div class="relative h-[52px] w-full grid place-items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl font-black text-[16px] shadow-lg shadow-green-600/20 group-hover:-translate-y-0.5 transition-all"><span class="flex items-center gap-2">إرسال على واتساب <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></button></form><div class="mt-5 pt-5 border-t border-white/5 flex items-center justify-between"><div class="flex -space-x-2">${[1,2,3,4].map(i => `<img src="https://i.pravatar.cc/32?img=${i+10}" class="w-7 h-7 rounded-full border-2 border-zinc-900">`).join('')}</div><div class="text-xs text-zinc-400">+127 طلب هذا الأسبوع</div></div></div><div class="px-8 py-4 bg-black/40 border-t border-white/5 flex items-center gap-3"><div class="flex gap-1">${Array(5).fill('<svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>').join('')}</div><span class="text-xs text-zinc-400">موثوق من 2,800+ عميل</span></div></div></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-20 lg:py-28"><div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-end justify-between mb-12 gap-6 flex-wrap"><div><div class="inline-flex items-center gap-2 mb-4"><div class="w-8 h-px bg-gradient-to-l from-amber-500 to-transparent"></div><span class="text-xs font-bold tracking-[0.2em] text-amber-400">المنتجات</span></div><h2 class="text-[clamp(28px,4vw,52px)] font-black leading-[1.1] tracking-tight">اختار الباب اللي<br/>يناسب بيتك</h2></div><p class="text-zinc-400 max-w-[420px] leading-relaxed">كل الأبواب بتجي مع معاينة مجانية، قياس دقيق، وتركيب احترافي بدون تكسير. ضمان حقيقي مش كلام.</p></div><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">${products.map(p => `<div class="group relative"><div class="absolute -inset-0.5 bg-gradient-to-b from-white/10 to-transparent rounded-[1.75rem] opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div><div class="relative h-full overflow-hidden rounded-[1.5rem] bg-zinc-900/70 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-1"><div class="relative aspect-[4/3] overflow-hidden"><img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent"></div><div class="absolute top-3 right-3"><span class="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/30 text-[10px] font-bold text-amber-300 tracking-wide">${p.badge}</span></div><div class="absolute bottom-3 left-3 right-3"><div class="text-[22px] font-black">${p.price}</div></div></div><div class="p-5"><h3 class="text-[18px] font-black mb-1.5">${p.title}</h3><p class="text-sm text-zinc-400 leading-relaxed min-h-[40px]">${p.desc}</p><div class="mt-4 flex flex-wrap gap-1.5">${p.features.map(f => `<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/5 text-[11px] font-medium text-zinc-300">${f}</span>`).join('')}</div><a href="${whatsappLink(`عايز تفاصيل عن ${p.title}`)}" target="_blank" class="mt-5 w-full h-11 grid place-items-center rounded-xl bg-white/5 hover:bg-amber-500 hover:text-black font-bold text-sm border border-white/10 hover:border-amber-500 transition-all">اسأل على واتساب</a></div></div></div>`).join('')}</div></div></section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 lg:py-28 relative"><div class="absolute inset-0 bg-grid-pattern"></div><div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8"><div class="grid lg:grid-cols-2 gap-16 items-center"><div><div class="inline-flex items-center gap-2 mb-4"><div class="w-8 h-px bg-gradient-to-l from-amber-500 to-transparent"></div><span class="text-xs font-bold tracking-[0.2em] text-amber-400">ليه درع الأمان؟</span></div><h2 class="text-[clamp(28px,4vw,48px)] font-black leading-[1.15] mb-6">أمان حقيقي مش<br/>مجرد شكل</h2><p class="text-zinc-400 leading-relaxed text-[17px] mb-10">بنستورد الأبواب بنفسنا من أكبر مصانع تركيا وإيطاليا. كل باب بيعدي على 3 مراحل فحص قبل التركيب.</p><div class="space-y-5">${[{title:"صلب مصفح 1.5 مم + حشو صوف صخري",desc:"مقاوم للكسر، النار، وعزل صوت 100%"},{title:"11 نقطة غلق + قفل Kale تركي أصلي",desc:"مستحيل يتفتح إلا بمفتاحك"},{title:"إطار كامل 2 مم مع تثبيت كيميائي",desc:"مفيش خلع ولا كسر من الحلق"},{title:"تركيب بدون تكسير في 3 ساعات",desc:"فريق متخصص بمعدات حديثة"}].map(f => `<div class="group flex gap-4"><div class="relative shrink-0"><div class="absolute -inset-2 bg-amber-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div><div class="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30 grid place-items-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round"/></svg></div></div><div><div class="font-bold text-[17px] mb-1">${f.title}</div><div class="text-sm text-zinc-500 leading-relaxed">${f.desc}</div></div></div>`).join('')}</div><a href="${whatsappLink('عايز فيديو اختبار الكسر')}" target="_blank" class="inline-flex items-center gap-2 mt-10 text-amber-400 font-bold hover:gap-3 transition-all">شوف فيديو اختبار الكسر <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div><div class="relative"><div class="relative aspect-[4/5] max-w-[520px] mx-auto"><div class="absolute -inset-6 bg-gradient-to-tr from-amber-600/20 via-orange-500/20 to-transparent rounded-[3rem] blur-3xl"></div><div class="relative h-full overflow-hidden rounded-[2.5rem] border border-white/10"><img src="https://images.pexels.com/photos/13963754/pexels-photo-13963754.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=900" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div><div class="absolute top-6 left-6 right-6 flex justify-between"><div class="px-3.5 py-2 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10"><div class="text-[10px] text-zinc-400">مقاومة الكسر</div><div class="text-lg font-black text-amber-400">900 كجم</div></div><div class="px-3.5 py-2 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10"><div class="text-[10px] text-zinc-400">عزل الصوت</div><div class="text-lg font-black text-amber-400">-42 dB</div></div></div><div class="absolute bottom-0 inset-x-0 p-6"><div class="p-5 rounded-2xl bg-black/80 backdrop-blur-2xl border border-white/10"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-xl bg-green-500/20 grid place-items-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="font-black">شهادة أمان أوروبية</div><div class="text-xs text-zinc-400">EN 1627 RC3 Certified</div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="py-1.5 rounded-lg bg-white/5 text-[11px] font-medium">ضد الحريق 60د</div><div class="py-1.5 rounded-lg bg-white/5 text-[11px] font-medium">ضد الماء</div><div class="py-1.5 rounded-lg bg-white/5 text-[11px] font-medium">ضد الصدأ</div></div></div></div></div></div></div></div></div></section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 lg:py-28 border-t border-white/5"><div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-end justify-between mb-10 flex-wrap gap-4"><h2 class="text-[clamp(28px,4vw,48px)] font-black">شغلنا على الطبيعة</h2><a href="${whatsappLink('عايز اشوف كتالوج كامل')}" target="_blank" class="text-sm font-bold text-zinc-400 hover:text-white flex items-center gap-2">شوف 200+ تصميم <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 auto-rows-[200px]">${gallery.map((img, i) => `<div class="relative overflow-hidden rounded-2xl border border-white/10 group ${i===0 ? 'md:col-span-2 md:row-span-2' : ''} ${i===3 ? 'lg:col-span-2' : ''}"><img src="${img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div><div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">تم التركيب</div></div>`).join('')}</div></div></section>
+
+        <!-- Testimonials & Final CTA (abbreviated for length but functional) -->
+        <section class="py-20"><div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8"><div class="grid lg:grid-cols-3 gap-6">${[{name:"أحمد محمود",area:"التجمع الخامس",text:"الباب المصفح التركي اللي ركبته من 3 سنين لسه زي ما هو. حاول حرامي يكسره ومعرفش. أنصح بيه أي حد."},{name:"سارة عبدالله",area:"الشيخ زايد",text:"الأبواب الداخلية المودرن غيرت شكل الشقة 180 درجة. التشطيب فاخر والتركيب كان نظيف جداً بدون بهدلة."},{name:"محمد حسين",area:"مدينتي",text:"خدمة ما بعد البيع ممتازة. كان فيه مشكلة بسيطة في الكالون جم غيروه في نفس اليوم مجاناً رغم ان الضمان كان خلص."}].map(t => `<div class="relative group"><div class="absolute -inset-px bg-gradient-to-b from-white/10 to-transparent rounded-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity"></div><div class="relative p-6 rounded-[1.5rem] bg-zinc-900/50 backdrop-blur-xl border border-white/10 h-full"><div class="flex gap-1 mb-4">${Array(5).fill('<svg width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>').join('')}</div><p class="text-[15px] leading-relaxed text-zinc-300 mb-5">"${t.text}"</p><div class="flex items-center gap-3"><img src="https://i.pravatar.cc/40?u=${t.name}" class="w-10 h-10 rounded-full"><div><div class="font-bold text-sm">${t.name}</div><div class="text-xs text-zinc-500">${t.area}</div></div></div></div></div>`).join('')}</div></div></section>
+
+        <section id="pricing" class="py-20 lg:py-28 relative overflow-hidden"><div class="absolute inset-0"><div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.15),transparent_70%)]"></div></div><div class="relative max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 text-center"><div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-6"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span><span class="text-xs font-bold text-red-400 tracking-wide">العرض ينتهي خلال 48 ساعة</span></div><h2 class="text-[clamp(32px,5vw,64px)] font-black leading-[1.1] tracking-tight mb-6">خد بابك المصفح<br/><span class="text-zinc-500">بخصم 25% + تركيب مجاني</span></h2><p class="text-lg text-zinc-400 max-w-[600px] mx-auto mb-10 leading-relaxed">احجز معاينة مجانية النهاردة وهنبعتلك مهندس يقيس ويعرض عليك الكتالوج كامل. لو عجبك السعر بنركب في خلال 24 ساعة.</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="${whatsappLink('عايز احجز معاينة مجانية النهاردة')}" target="_blank" class="group relative"><div class="absolute -inset-1 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 rounded-2xl blur-2xl opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></div><div class="relative flex items-center justify-center gap-3 h-[60px] px-10 bg-white text-black rounded-2xl font-black text-[18px] shadow-2xl group-hover:-translate-y-0.5 transition-all"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-green-600"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>كلمنا واتساب حالاً</div></a><a href="tel:+${WHATSAPP_NUMBER}" class="h-[60px] px-10 grid place-items-center rounded-2xl bg-zinc-900 border border-white/15 font-bold text-[18px] hover:bg-zinc-800 transition-all">اتصل: 0100 000 0000</a></div><div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-zinc-500"><div class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round"/></svg>معاينة مجانية</div><div class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round"/></svg>بدون عربون</div><div class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round"/></svg>ضمان 10 سنين</div><div class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round"/></svg>تركيب في 24 ساعة</div></div></div></section>
+
+        <footer class="border-t border-white/5 py-12"><div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8"><div class="flex flex-col md:flex-row items-center justify-between gap-6"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 grid place-items-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="white" strokeWidth="2" fill="white" fillOpacity="0.2"/></svg></div><div><div class="font-black">دِرْع الأمان للأبواب</div><div class="text-xs text-zinc-500">مصفحة وداخلية منذ 2012</div></div></div><div class="text-sm text-zinc-500 text-center md:text-left">القاهرة • الجيزة • الإسكندرية • الدلتا • توصيل وتركيب لجميع المحافظات</div><div class="flex items-center gap-3"><a href="${whatsappLink()}" target="_blank" class="w-9 h-9 grid place-items-center rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-green-500"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a><a href="tel:+${WHATSAPP_NUMBER}" class="w-9 h-9 grid place-items-center rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a></div></div><div class="mt-8 pt-8 border-t border-white/5 text-center text-xs text-zinc-600">© 2025 درع الأمان. جميع الحقوق محفوظة. تصميم وتركيب أبواب مصفحة وداخلية.</div></div></footer>
+
+        <!-- Floating WhatsApp -->
+        <a href="${whatsappLink()}" target="_blank" class="fixed bottom-5 left-5 z-40 group"><div class="absolute -inset-3 bg-green-500/30 rounded-full blur-2xl group-hover:bg-green-500/50 transition-all animate-pulse"></div><div class="relative w-[60px] h-[60px] grid place-items-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-2xl shadow-green-600/30 group-hover:scale-110 transition-transform"><svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div></a>
+      `;
+      
+      // Bind events after render
+      document.getElementById("menuToggle")?.addEventListener("click", () => {
+        state.isMenuOpen = !state.isMenuOpen;
+        render();
+      });
+      document.querySelectorAll(".mobile-nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+          state.isMenuOpen = false;
+          render();
+        });
+      });
+      const form = document.getElementById("leadForm");
+      if (form) {
+        form.onsubmit = (e) => {
+          e.preventDefault();
+          const name = document.getElementById("formName").value;
+          const phone = document.getElementById("formPhone").value;
+          const doorType = document.getElementById("formDoorType").value;
+          const city = document.getElementById("formCity").value;
+          const msg = `طلب معاينة مجانية:\nالاسم: ${name}\nالهاتف: ${phone}\nنوع الباب: ${doorType}\nالمدينة: ${city}`;
+          window.open(whatsappLink(msg), "_blank");
+        };
+      }
+    }
+
+    // Scroll listener for header background
+    function handleScroll() {
+      const scrolled = window.scrollY > 20;
+      if (scrolled !== state.scrolled) {
+        state.scrolled = scrolled;
+        render();
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    render();
+  </script>
+</body>
+</html>
